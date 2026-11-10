@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Northeast Fence — case study pin</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#1F4E9E}a:hover{color:#163A78}
+</style>
+</helmet>
+<div id="top" style="background: #FFFFFF; color: #111111; font-family: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; line-height: 1.45; min-height: 100vh">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 20px">
+<a href="Main.dc.html" aria-label="Home" style="width: 48px; height: 48px; flex: none; border-radius: 999px; background: {{accent}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 800; font-size: 22px">H</a>
+<a href="Main.dc.html" style="flex: 1 1 260px; min-width: 0; display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 18px; border-radius: 999px; background: #EFEFEF; color: #4A4F57; text-decoration: none">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A4F57" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+Search Hector’s board
+</a>
+<a href="#top" style="display: inline-flex; align-items: center; height: 48px; padding: 0 20px; border-radius: 999px; background: #111111; color: #FFFFFF; text-decoration: none; font-weight: 600">Resume</a>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; max-width: 1120px; margin: 0 auto; padding: 20px 20px 56px; box-sizing: border-box">
+<a href="Main.dc.html" aria-label="Back to the board" style="width: 48px; height: 48px; flex: none; border-radius: 999px; display: flex; align-items: center; justify-content: center; color: #111111; background: #FFFFFF">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+</a>
+
+<article style="flex: 999 1 640px; min-width: 0; display: flex; flex-wrap: wrap; border-radius: 32px; overflow: hidden; background: #FFFFFF; box-shadow: 0 1px 20px rgba(17,17,17,0.12)">
+
+<div style="flex: 1 1 400px; min-width: 0; position: relative; min-height: 600px; background: {{slide.bg}}; display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box; text-align: center; font-size: 14px; color: #3E4450">
+{{slide.label}}
+<span style="position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; font-size: 13px; font-weight: 700">In progress</span>
+<button type="button" aria-label="Previous image" onClick="{{prev}}" style="position: absolute; left: 14px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border-radius: 999px; border: 0; background: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+</button>
+<button type="button" aria-label="Next image" onClick="{{next}}" style="position: absolute; right: 14px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border-radius: 999px; border: 0; background: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+</button>
+<div style="position: absolute; bottom: 18px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px">
+<sc-for list="{{dots}}" as="dot" hint-placeholder-count="3">
+<span style="width: 8px; height: 8px; border-radius: 999px; background: {{dot.color}}"></span>
+</sc-for>
+</div>
+</div>
+
+<div style="flex: 1 1 400px; min-width: 0; padding: 28px 32px 36px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<div style="display: flex; gap: 4px">
+<button type="button" aria-label="Share" style="width: 48px; height: 48px; border-radius: 999px; border: 0; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="M7 8l5-5 5 5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg>
+</button>
+<button type="button" aria-label="Copy link" style="width: 48px; height: 48px; border-radius: 999px; border: 0; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path></svg>
+</button>
+</div>
+<a href="https://northeast-fence.com" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; text-decoration: none; font-weight: 700">Visit site</a>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<a href="https://northeast-fence.com" style="font-size: 14px; color: #111111; text-decoration: underline">northeast-fence.com</a>
+<h1 style="margin: 0; font-weight: 800; font-size: 36px; line-height: 1.05; letter-spacing: -0.03em; font-variation-settings: 'opsz' 96">Northeast Fence</h1>
+<p style="margin: 0; font-size: 17px; color: #2B2F36">A new website, Google Ads strategy, and a custom CRM in progress for my family’s fencing business in Union and Middlesex counties, NJ.</p>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="width: 48px; height: 48px; border-radius: 999px; padding: 3px; background: {{accent}}; box-sizing: border-box">
+<div style="width: 100%; height: 100%; border-radius: 999px; border: 2px solid #FFFFFF; box-sizing: border-box; background: #DCE5F3"></div>
+</div>
+<div>
+<p style="margin: 0; font-weight: 700">Hector</p>
+<p style="margin: 0; font-size: 13px; color: #4A4F57">Built, ran, and maintains this</p>
+</div>
+</div>
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: 999px; background: #EFEFEF; color: #111111; text-decoration: none; font-weight: 600">Get in touch</a>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{stack}}" as="s" hint-placeholder-count="8">
+<span style="padding: 7px 13px; border-radius: 999px; background: #EEF2F9; font-size: 13px; font-weight: 600; color: #163A78">{{s.name}}</span>
+</sc-for>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 18px; border-top: 1px solid #E3E6EB; padding-top: 20px">
+<div>
+<h2 style="margin: 0 0 4px; font-size: 18px; font-weight: 700">The problem</h2>
+<p style="margin: 0; color: #2B2F36">An older WordPress site where leads landed in an email inbox, and no CRM to track them.</p>
+</div>
+<div>
+<h2 style="margin: 0 0 4px; font-size: 18px; font-weight: 700">What I did</h2>
+<p style="margin: 0; color: #2B2F36">Rebuilt the site as fast static pages, with a landing page for each service in each town for paid traffic. New lead form saves to a database and sends alerts. Built a tiered service-area plan from past job data that the owner adopted, and launched Local Services Ads.</p>
+</div>
+<div>
+<h2 style="margin: 0 0 4px; font-size: 18px; font-weight: 700">Decisions I made</h2>
+<p style="margin: 0; color: #2B2F36">Kept every existing URL at launch to protect search rankings. Chose ad landing pages over a blog. Skipped a CMS for now since I maintain the site in code.</p>
+</div>
+<div>
+<h2 style="margin: 0 0 4px; font-size: 18px; font-weight: 700">Result</h2>
+<p style="margin: 0; color: #2B2F36">[YOUR RESULT: e.g. leads per month, cost per lead, before vs. after]</p>
+</div>
+<div>
+<h2 style="margin: 0 0 4px; font-size: 18px; font-weight: 700">What’s next</h2>
+<p style="margin: 0; color: #2B2F36">A custom CRM built around how the business actually works, with security as the top priority.</p>
+</div>
+</div>
+
+</div>
+</article>
+</div>
+
+<section id="more" style="max-width: 1400px; margin: 0 auto; padding: 0 16px 72px; box-sizing: border-box">
+<h2 style="margin: 0 0 20px; text-align: center; font-size: 22px; font-weight: 700">More like this</h2>
+<div style="columns: 236px; column-gap: 16px">
+<sc-for list="{{more}}" as="pin" hint-placeholder-count="8">
+<a href="Main.dc.html" style="break-inside: avoid; display: block; margin: 0 0 20px; color: #111111; text-decoration: none">
+<div style="height: {{pin.h}}px; border-radius: 16px; background: {{pin.bg}}; display: flex; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box; text-align: center; font-size: 13px; color: #3E4450">{{pin.label}}</div>
+<div style="padding: 8px 4px 0">
+<p style="margin: 0; font-size: 15px; font-weight: 700; line-height: 1.25">{{pin.title}}</p>
+<p style="margin: 2px 0 0; font-size: 13px; color: #4A4F57">{{pin.sub}}</p>
+</div>
+</a>
+</sc-for>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#1F4E9E","options":["#1F4E9E","#2B5FB8","#163A78","#3A6FC4"]},"$preview":{"width":1280,"height":2000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#1F4E9E';
+    const st = this.state || {};
+    const slides = [
+      { label: '[Screenshot: new homepage]', bg: '#DCE5F3' },
+      { label: '[Screenshot: a service × town landing page]', bg: '#CFDBEE' },
+      { label: '[Screenshot: the new lead form]', bg: '#E4E4E7' }
+    ];
+    const i = st.i || 0;
+    const dots = slides.map((s, n) => ({ color: n === i ? '#111111' : 'rgba(17,17,17,0.28)' }));
+    const stack = ['Next.js', 'TypeScript', 'Tailwind', 'Supabase', 'Resend', 'Vercel', 'GA4', 'Google Ads'].map((name) => ({ name: name }));
+    const more = [
+      { title: 'FirstByte Dashboard', sub: 'Attendance and club management app', label: '[Demo video thumbnail]', h: 340, bg: '#CFDBEE' },
+      { title: 'FirstByte', sub: 'Leading the website team', label: '[Screenshot: FirstByte site]', h: 280, bg: '#D9E2DA' },
+      { title: 'Explaining tech to non-tech people', sub: 'FirstByte × Hack84 workshop', label: '[Photo: workshop]', h: 200, bg: '#E4E4E7' },
+      { title: 'U.S. District Court of NJ', sub: 'IT intern', label: '[Photo: internship]', h: 180, bg: '#DCE5F3' },
+      { title: 'ViTAL hackathon', sub: 'Curating tracks', label: '[Photo: ViTAL event]', h: 260, bg: '#E8E1D6' },
+      { title: 'Boys & Girls Club', sub: 'Volunteer teaching in Dorchester', label: '[Photo: teaching]', h: 230, bg: '#E4E4E7' },
+      { title: 'FirstByte events', sub: '[Your caption]', label: '[Photo: team or event]', h: 300, bg: '#CFDBEE' },
+      { title: '[Place]', sub: 'Travel', label: '[Travel photo]', h: 250, bg: '#D9E2DA' }
+    ];
+    return {
+      accent: accent,
+      slide: slides[i],
+      dots: dots,
+      prev: () => this.setState({ i: (i + slides.length - 1) % slides.length }),
+      next: () => this.setState({ i: (i + 1) % slides.length }),
+      stack: stack,
+      more: more
+    };
+  }
+}
+</script>
+</body>
+</html>

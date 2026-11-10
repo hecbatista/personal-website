@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FirstByte Dashboard — case study pin</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#1F4E9E}a:hover{color:#163A78}
+</style>
+</helmet>
+<div id="top" style="background: #FFFFFF; color: #111111; font-family: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; line-height: 1.45; min-height: 100vh">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 20px">
+<a href="Main.dc.html" aria-label="Home" style="width: 48px; height: 48px; flex: none; border-radius: 999px; background: {{accent}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 800; font-size: 22px">H</a>
+<a href="Main.dc.html" style="flex: 1 1 260px; min-width: 0; display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 18px; border-radius: 999px; background: #EFEFEF; color: #4A4F57; text-decoration: none">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A4F57" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+Search Hector’s board
+</a>
+<a href="#top" style="display: inline-flex; align-items: center; height: 48px; padding: 0 20px; border-radius: 999px; background: #111111; color: #FFFFFF; text-decoration: none; font-weight: 600">Resume</a>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; max-width: 1120px; margin: 0 auto; padding: 20px 20px 56px; box-sizing: border-box">
+<a href="Main.dc.html" aria-label="Back to the board" style="width: 48px; height: 48px; flex: none; border-radius: 999px; display: flex; align-items: center; justify-content: center; background: #FFFFFF">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+</a>
+
+<article style="flex: 999 1 640px; min-width: 0; display: flex; flex-wrap: wrap; border-radius: 32px; overflow: hidden; background: #FFFFFF; box-shadow: 0 1px 20px rgba(17,17,17,0.12)">
+
+<div style="flex: 1 1 400px; min-width: 0; position: relative; min-height: 620px; background: {{slide.bg}}; display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box; text-align: center; font-size: 14px; color: {{slide.fg}}">
+
+<sc-if value="{{slide.isVideo}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 14px">
+<button type="button" aria-label="{{playLabel}}" onClick="{{togglePlay}}" style="width: 76px; height: 76px; border-radius: 999px; border: 0; background: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<sc-if value="{{playing}}" hint-placeholder-val="{{ false }}">
+<svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="#111111"><rect x="6" y="4" width="4" height="16" rx="1"></rect><rect x="14" y="4" width="4" height="16" rx="1"></rect></svg>
+</sc-if>
+<sc-if value="{{notPlaying}}" hint-placeholder-val="{{ true }}">
+<svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="#111111"><path d="M8 4.5l12 7.5-12 7.5z"></path></svg>
+</sc-if>
+</button>
+<p style="margin: 0; font-size: 14px; color: #D5D8DE">{{videoCaption}}</p>
+</div>
+<div style="position: absolute; left: 16px; right: 16px; bottom: 44px; display: flex; align-items: center; gap: 12px; color: #FFFFFF; font-size: 13px; font-weight: 600">
+<span>{{timeLabel}}</span>
+<div style="flex: 1; height: 4px; border-radius: 999px; background: rgba(255,255,255,0.3)">
+<div style="width: {{progress}}; height: 4px; border-radius: 999px; background: #FFFFFF"></div>
+</div>
+<span>[length]</span>
+</div>
+</sc-if>
+
+<sc-if value="{{slide.isImage}}" hint-placeholder-val="{{ false }}">
+{{slide.label}}
+</sc-if>
+
+<span style="position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; font-size: 13px; font-weight: 700">Case study</span>
+<button type="button" aria-label="Previous" onClick="{{prev}}" style="position: absolute; left: 14px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border-radius: 999px; border: 0; background: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+</button>
+<button type="button" aria-label="Next" onClick="{{next}}" style="position: absolute; right: 14px; top: 50%; margin-top: -22px; width: 44px; height: 44px; border-radius: 999px; border: 0; background: #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg>
+</button>
+<div style="position: absolute; bottom: 18px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px">
+<sc-for list="{{dots}}" as="dot" hint-placeholder-count="3">
+<span style="width: 8px; height: 8px; border-radius: 999px; background: {{dot.color}}"></span>
+</sc-for>
+</div>
+</div>
+
+<div style="flex: 1 1 400px; min-width: 0; padding: 28px 32px 36px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<div style="display: flex; gap: 4px">
+<button type="button" aria-label="Share" style="width: 48px; height: 48px; border-radius: 999px; border: 0; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="M7 8l5-5 5 5"></path><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"></path></svg>
+</button>
+<button type="button" aria-label="Copy link" style="width: 48px; height: 48px; border-radius: 999px; border: 0; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path></svg>
+</button>
+</div>
+<a href="#demo" style="display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 22px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; text-decoration: none; font-weight: 700">Try the demo</a>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-size: 14px; color: #4A4F57">For FirstByte at Northeastern</p>
+<h1 style="margin: 0; font-weight: 800; font-size: 36px; line-height: 1.05; letter-spacing: -0.03em; font-variation-settings: 'opsz' 96">FirstByte Dashboard</h1>
+<p style="margin: 0; font-size: 17px; color: #2B2F36">A club management and attendance tracking app for FirstByte, a CS/STEM education club. I’m the only developer, and it runs in production for real members.</p>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; align-items: center; gap: 12px">
+<div style="width: 48px; height: 48px; border-radius: 999px; padding: 3px; background: {{accent}}; box-sizing: border-box">
+<div style="width: 100%; height: 100%; border-radius: 999px; border: 2px solid #FFFFFF; box-sizing: border-box; background: #DCE5F3"></div>
+</div>
+<div>
+<p style="margin: 0; font-weight: 700">Hector</p>
+<p style="margin: 0; font-size: 13px; color: #4A4F57">Solo developer</p>
+</div>
+</div>
+<a href="Main.dc.html" style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: 999px; background: #EFEFEF; color: #111111; text-decoration: none; font-weight: 600">Get in touch</a>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{stack}}" as="s" hint-placeholder-count="8">
+<span style="padding: 7px 13px; border-radius: 999px; background: #EEF2F9; font-size: 13px; font-weight: 600; color: #163A78">{{s.name}}</span>
+</sc-for>
+</div>
+
+<section id="demo" style="border-radius: 20px; background: #EEF2F9; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px">
+<h2 style="margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.01em">Try the demo</h2>
+<a href="#demo" style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border-radius: 999px; background: #111111; color: #FFFFFF; text-decoration: none; font-weight: 600">Open live demo ↗</a>
+</div>
+<p style="margin: 0; font-size: 14px; color: #2B2F36">[YOUR DEMO URL] · Demo account with sample data, so nothing touches real members.</p>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-for list="{{creds}}" as="c" hint-placeholder-count="2">
+<div style="display: flex; align-items: center; gap: 10px; background: #FFFFFF; border-radius: 14px; padding: 6px 6px 6px 14px">
+<span style="font-size: 13px; color: #4A4F57; width: 72px; flex: none">{{c.name}}</span>
+<span style="flex: 1; min-width: 0; font-size: 15px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{c.value}}</span>
+<button type="button" onClick="{{c.copy}}" style="min-height: 44px; padding: 0 14px; border-radius: 999px; border: 0; background: #EFEFEF; color: #111111; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer">{{c.label}}</button>
+</div>
+</sc-for>
+</div>
+<div>
+<p style="margin: 0 0 6px; font-size: 14px; font-weight: 700">Things to try</p>
+<ol style="margin: 0; padding-left: 20px; font-size: 14px; color: #2B2F36; display: flex; flex-direction: column; gap: 4px">
+<li>Check in to a meeting with the QR code</li>
+<li>Open the officer dashboard and see attendance rates</li>
+<li>Search and filter attendance records</li>
+<li>Submit feedback, then review it as an officer</li>
+</ol>
+</div>
+</section>
+
+<div style="display: flex; flex-direction: column; gap: 18px; border-top: 1px solid #E3E6EB; padding-top: 20px">
+<div>
+<h2 style="margin: 0 0 4px; font-size: 18px; font-weight: 700">The problem</h2>
+<p style="margin: 0; color: #2B2F36">[How the club tracked attendance and members before this]</p>
+</div>
+<div>
+<h2 style="margin: 0 0 4px; font-size: 18px; font-weight: 700">What I built</h2>
+<p style="margin: 0; color: #2B2F36">Self check-in with signed QR codes, member and officer dashboards with attendance rates, searchable attendance records, and a feedback system officers can review.</p>
+</div>
+<div>
+<h2 style="margin: 0 0 4px; font-size: 18px; font-weight: 700">Decisions I made</h2>
+<p style="margin: 0; color: #2B2F36">Email sign-in links kept breaking because school email scanners clicked them first, so I switched to 6-digit codes. Every pull request has to pass formatting, linting, type checks, and a build before it can merge. Preview deploys use their own database so testing never touches real data.</p>
+</div>
+<div>
+<h2 style="margin: 0 0 4px; font-size: 18px; font-weight: 700">Result</h2>
+<p style="margin: 0; color: #2B2F36">[YOUR RESULT: e.g. members using it, meetings tracked]</p>
+</div>
+<div>
+<h2 style="margin: 0 0 4px; font-size: 18px; font-weight: 700">What’s next</h2>
+<p style="margin: 0; color: #2B2F36">An approval step for new members, dark mode, and moving it to the club’s own domain.</p>
+</div>
+</div>
+
+</div>
+</article>
+</div>
+
+<section style="max-width: 1400px; margin: 0 auto; padding: 0 16px 72px; box-sizing: border-box">
+<h2 style="margin: 0 0 20px; text-align: center; font-size: 22px; font-weight: 700">More like this</h2>
+<div style="columns: 236px; column-gap: 16px">
+<sc-for list="{{more}}" as="pin" hint-placeholder-count="6">
+<a href="{{pin.href}}" style="break-inside: avoid; display: block; margin: 0 0 20px; color: #111111; text-decoration: none">
+<div style="height: {{pin.h}}px; border-radius: 16px; background: {{pin.bg}}; display: flex; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box; text-align: center; font-size: 13px; color: #3E4450">{{pin.label}}</div>
+<div style="padding: 8px 4px 0">
+<p style="margin: 0; font-size: 15px; font-weight: 700; line-height: 1.25">{{pin.title}}</p>
+<p style="margin: 2px 0 0; font-size: 13px; color: #4A4F57">{{pin.sub}}</p>
+</div>
+</a>
+</sc-for>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#1F4E9E","options":["#1F4E9E","#2B5FB8","#163A78","#3A6FC4"]},"$preview":{"width":1280,"height":2300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#1F4E9E';
+    const st = this.state || {};
+    const slides = [
+      { isVideo: true, isImage: false, bg: '#111111', fg: '#FFFFFF', label: '' },
+      { isVideo: false, isImage: true, bg: '#CFDBEE', fg: '#3E4450', label: '[Screenshot: officer dashboard]' },
+      { isVideo: false, isImage: true, bg: '#DCE5F3', fg: '#3E4450', label: '[Screenshot: QR check-in]' }
+    ];
+    const i = st.i || 0;
+    const playing = !!st.playing;
+    const copied = st.copied || '';
+    const credRows = [
+      { name: 'Email', value: '[demo email]' },
+      { name: 'Password', value: '[demo password]' }
+    ];
+    const creds = credRows.map((c) => ({
+      ...c,
+      label: copied === c.name ? 'Copied' : 'Copy',
+      copy: () => this.setState({ copied: c.name })
+    }));
+    const dots = slides.map((s, n) => ({ color: n === i ? (slides[i].isVideo ? '#FFFFFF' : '#111111') : (slides[i].isVideo ? 'rgba(255,255,255,0.4)' : 'rgba(17,17,17,0.28)') }));
+    const stack = ['Next.js', 'TypeScript', 'Prisma', 'Supabase', 'shadcn/ui', 'Tailwind', 'Vercel', 'GitHub Actions'].map((name) => ({ name: name }));
+    const more = [
+      { title: 'Northeast Fence', sub: 'Website rebuild and Google Ads', label: '[Screenshot: the fence site]', h: 320, bg: '#DCE5F3', href: 'Pin.dc.html' },
+      { title: 'FirstByte', sub: 'Leading the website team', label: '[Screenshot: FirstByte site]', h: 280, bg: '#D9E2DA', href: 'Main.dc.html' },
+      { title: 'Explaining tech to non-tech people', sub: 'FirstByte × Hack84 workshop', label: '[Photo: workshop]', h: 200, bg: '#E4E4E7', href: 'Main.dc.html' },
+      { title: 'FirstByte events', sub: '[Your caption]', label: '[Photo: team or event]', h: 300, bg: '#E8E1D6', href: 'Main.dc.html' },
+      { title: 'ViTAL hackathon', sub: 'Curating tracks', label: '[Photo: ViTAL event]', h: 240, bg: '#CFDBEE', href: 'Main.dc.html' },
+      { title: 'U.S. District Court of NJ', sub: 'IT intern', label: '[Photo: internship]', h: 180, bg: '#DCE5F3', href: 'Main.dc.html' }
+    ];
+    return {
+      accent: accent,
+      slide: slides[i],
+      dots: dots,
+      playing: playing,
+      notPlaying: !playing,
+      playLabel: playing ? 'Pause demo video' : 'Play demo video',
+      videoCaption: playing ? '[Demo video plays here]' : 'Demo video · [length]',
+      timeLabel: playing ? '0:12' : '0:00',
+      progress: playing ? '18%' : '0%',
+      togglePlay: () => this.setState({ playing: !playing }),
+      prev: () => this.setState({ i: (i + slides.length - 1) % slides.length, playing: false }),
+      next: () => this.setState({ i: (i + 1) % slides.length, playing: false }),
+      creds: creds,
+      stack: stack,
+      more: more
+    };
+  }
+}
+</script>
+</body>
+</html>

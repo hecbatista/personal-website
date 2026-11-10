@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Hector’s board</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#1F4E9E}a:hover{color:#163A78}
+input::placeholder{color:#6B7079}
+</style>
+</helmet>
+<div id="top" style="background: #FFFFFF; color: #111111; font-family: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif; font-size: 16px; line-height: 1.4; min-height: 100vh">
+
+<header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 20px">
+<a href="#top" aria-label="Home" style="width: 48px; height: 48px; flex: none; border-radius: 999px; background: {{accent}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 800; font-size: 22px">H</a>
+<label style="flex: 1 1 260px; min-width: 0; display: flex; align-items: center; gap: 10px; height: 48px; padding: 0 18px; border-radius: 999px; background: #EFEFEF">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A4F57" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search the board</span>
+<input type="search" value="{{q}}" onChange="{{onSearch}}" placeholder="Search Hector’s board — try “fence” or “dashboard”" style="flex: 1; min-width: 0; border: 0; background: transparent; font-family: inherit; font-size: 16px; color: #111111; outline: none; height: 44px">
+</label>
+<a href="#contact" style="display: inline-flex; align-items: center; height: 48px; padding: 0 20px; border-radius: 999px; background: #111111; color: #FFFFFF; text-decoration: none; font-weight: 600">Resume</a>
+</header>
+
+<section style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; padding: 40px 20px 28px">
+<div style="width: 128px; height: 128px; border-radius: 999px; padding: 5px; background: {{accent}}; box-sizing: border-box">
+<div style="width: 100%; height: 100%; border-radius: 999px; border: 4px solid #FFFFFF; box-sizing: border-box; background: #DCE5F3; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #3E4450">[Your photo]</div>
+</div>
+<h1 style="margin: 0; font-weight: 800; font-size: 44px; letter-spacing: -0.03em; font-variation-settings: 'opsz' 96">Hector</h1>
+<p style="margin: 0; font-size: 20px; font-weight: 500; max-width: 34ch">I build useful things for real people.</p>
+<p style="margin: 0; font-size: 15px; color: #4A4F57; max-width: 56ch">CS + Business at Northeastern, FinTech concentration. Looking for Product and AI Engineering roles in 2027.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding-top: 6px">
+<a href="#contact" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; text-decoration: none; font-weight: 600">Get in touch</a>
+<a href="#contact" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border-radius: 999px; background: #EFEFEF; color: #111111; text-decoration: none; font-weight: 600">Resume</a>
+</div>
+</section>
+
+<nav aria-label="Filter the board" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: 8px 20px 24px">
+<sc-for list="{{tabs}}" as="tab" hint-placeholder-count="4">
+<button type="button" aria-pressed="{{tab.pressed}}" onClick="{{tab.pick}}" style="min-height: 44px; padding: 0 14px; border: 0; background: transparent; font-family: inherit; font-size: 16px; font-weight: 600; color: #111111; cursor: pointer; box-shadow: inset 0 -3px 0 {{tab.line}}">{{tab.name}}</button>
+</sc-for>
+</nav>
+
+<main id="board" style="max-width: 1400px; margin: 0 auto; padding: 0 16px 64px; box-sizing: border-box">
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+<p style="text-align: center; color: #4A4F57; padding: 40px 0; margin: 0">No pins match that. Try “work” or “travel”.</p>
+</sc-if>
+<div style="columns: 236px; column-gap: 16px">
+<sc-for list="{{pins}}" as="pin" hint-placeholder-count="10">
+
+<sc-if value="{{pin.isImage}}" hint-placeholder-val="{{ true }}">
+<a href="{{pin.href}}" style="break-inside: avoid; display: block; margin: 0 0 20px; color: #111111; text-decoration: none">
+<div style="position: relative; height: {{pin.h}}px; border-radius: 16px; background: {{pin.bg}}; display: flex; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box; text-align: center; font-size: 13px; color: #3E4450">
+{{pin.label}}
+<sc-if value="{{pin.featured}}" hint-placeholder-val="{{ false }}">
+<span style="position: absolute; top: 12px; left: 12px; padding: 6px 12px; border-radius: 999px; background: {{pin.accent}}; color: #FFFFFF; font-size: 13px; font-weight: 700">{{pin.badge}}</span>
+</sc-if>
+<sc-if value="{{pin.video}}" hint-placeholder-val="{{ false }}">
+<span style="position: absolute; bottom: 12px; left: 12px; display: flex; align-items: center; gap: 6px; padding: 6px 12px 6px 9px; border-radius: 999px; background: rgba(17,17,17,0.8); color: #FFFFFF; font-size: 13px; font-weight: 700"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M7 4l13 8-13 8z"></path></svg>Demo video</span>
+</sc-if>
+</div>
+<div style="padding: 8px 4px 0">
+<p style="margin: 0; font-size: 15px; font-weight: 700; line-height: 1.25">{{pin.title}}</p>
+<p style="margin: 2px 0 0; font-size: 13px; color: #4A4F57">{{pin.sub}}</p>
+</div>
+</a>
+</sc-if>
+
+<sc-if value="{{pin.isText}}" hint-placeholder-val="{{ false }}">
+<div style="break-inside: avoid; margin: 0 0 20px; border-radius: 16px; background: {{pin.accent}}; color: #FFFFFF; padding: 26px 22px; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; opacity: 0.9">{{pin.sub}}</p>
+<p style="margin: 0; font-size: 26px; font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; font-variation-settings: 'opsz' 72">{{pin.title}}</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.4">{{pin.label}}</p>
+</div>
+</sc-if>
+
+<sc-if value="{{pin.isNow}}" hint-placeholder-val="{{ false }}">
+<div style="break-inside: avoid; margin: 0 0 20px; border-radius: 16px; background: #111111; color: #FFFFFF; padding: 22px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center">
+<div style="width: 150px; height: 150px; border-radius: 999px; border: 6px solid {{pin.accent}}; background: #2A2D33; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #D5D8DE">[Album art]</div>
+<div>
+<p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #BFD0F0">Now playing</p>
+<p style="margin: 4px 0 0; font-size: 18px; font-weight: 700">[Song title]</p>
+<p style="margin: 0; font-size: 14px; color: #D5D8DE">[Artist]</p>
+</div>
+</div>
+</sc-if>
+
+</sc-for>
+</div>
+</main>
+
+<footer id="contact" style="display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 48px 20px 72px; text-align: center; background: #F4F6FA">
+<p style="margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.02em">That’s the board.</p>
+<p style="margin: 0; color: #4A4F57">Open to Spring and Summer 2027 co-ops in Product and AI Engineering.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center">
+<a href="#contact" style="display: inline-flex; align-items: center; height: 48px; padding: 0 20px; border-radius: 999px; background: {{accent}}; color: #FFFFFF; text-decoration: none; font-weight: 600">[YOUR EMAIL]</a>
+<a href="#contact" style="display: inline-flex; align-items: center; height: 48px; padding: 0 20px; border-radius: 999px; background: #E3E7EE; color: #111111; text-decoration: none; font-weight: 600">LinkedIn</a>
+<a href="#contact" style="display: inline-flex; align-items: center; height: 48px; padding: 0 20px; border-radius: 999px; background: #E3E7EE; color: #111111; text-decoration: none; font-weight: 600">GitHub</a>
+<a href="#contact" style="display: inline-flex; align-items: center; height: 48px; padding: 0 20px; border-radius: 999px; background: #E3E7EE; color: #111111; text-decoration: none; font-weight: 600">Resume (PDF)</a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#1F4E9E","options":["#1F4E9E","#2B5FB8","#163A78","#3A6FC4"]},"$preview":{"width":1280,"height":2700}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#1F4E9E';
+    const st = this.state || {};
+    const filter = st.filter || 'All';
+    const q = st.q || '';
+    const all = [
+      { kind: 'image', cat: 'Work', featured: true, badge: 'In progress', href: 'Pin.dc.html', title: 'Northeast Fence', sub: 'Website rebuild, Google Ads, and a CRM in the works', label: '[Screenshot: the fence site]', h: 380, bg: '#DCE5F3' },
+      { kind: 'now', cat: 'Life', title: 'Now playing', sub: 'music' },
+      { kind: 'image', cat: 'Life', title: '[Place]', sub: 'Travel', label: '[Travel photo]', h: 320, bg: '#D9E2DA' },
+      { kind: 'text', cat: 'Work', title: 'Issue → branch → CI → deploy.', sub: 'How I build', label: 'Workflow first. Claude skills for the repetitive parts.' },
+      { kind: 'image', cat: 'Work', featured: true, badge: 'Case study', title: 'FirstByte', sub: 'Leading the website team and the club’s stack', label: '[Screenshot: FirstByte site]', h: 320, bg: '#D9E2DA' },
+      { kind: 'image', cat: 'Work', title: 'U.S. District Court of NJ', sub: 'IT intern', label: '[Photo: internship]', h: 180, bg: '#DCE5F3' },
+      { kind: 'image', cat: 'Life', title: 'Something I cooked', sub: '[Your caption]', label: '[Photo: a dish]', h: 270, bg: '#E8E1D6' },
+      { kind: 'image', cat: 'Work', featured: true, badge: 'Case study', video: true, href: 'Dashboard.dc.html', title: 'FirstByte Dashboard', sub: 'Attendance and club management app, built solo', label: '[Demo video thumbnail]', h: 400, bg: '#CFDBEE' },
+      { kind: 'image', cat: 'Work', title: 'Explaining tech to non-tech people', sub: 'FirstByte × Hack84 workshop', label: '[Photo: workshop]', h: 220, bg: '#E8E1D6' },
+      { kind: 'image', cat: 'Life', title: 'The Integra', sub: '2024 A-Spec', label: '[Photo: the car]', h: 230, bg: '#E4E4E7' },
+      { kind: 'image', cat: 'Work', title: 'ViTAL hackathon', sub: 'Software Expert Co-Lead, curating tracks', label: '[Photo: ViTAL event]', h: 260, bg: '#DCE5F3' },
+      { kind: 'image', cat: 'Life', title: '[Place]', sub: 'Travel', label: '[Travel photo]', h: 240, bg: '#CFDBEE' },
+      { kind: 'image', cat: 'Work', title: 'Boys & Girls Club', sub: 'Volunteer teaching in Dorchester', label: '[Photo: teaching]', h: 240, bg: '#E4E4E7' },
+      { kind: 'image', cat: 'Work', title: 'FirstByte events', sub: '[Your caption]', label: '[Photo: team or event]', h: 300, bg: '#E8E1D6' },
+      { kind: 'image', cat: 'Life', title: '[Place]', sub: 'Travel', label: '[Travel photo]', h: 290, bg: '#D9E2DA' }
+    ];
+    const needle = q.trim().toLowerCase();
+    const pins = all
+      .filter((p) => filter === 'All' || p.cat === filter)
+      .filter((p) => !needle || [p.title, p.sub, p.cat, p.label || ''].join(' ').toLowerCase().indexOf(needle) !== -1)
+      .map((p) => ({
+        ...p,
+        accent: accent,
+        featured: !!p.featured,
+        href: p.href || '#board',
+        video: !!p.video,
+        badge: p.badge || '',
+        isImage: p.kind === 'image',
+        isText: p.kind === 'text',
+        isNow: p.kind === 'now'
+      }));
+    const tabs = ['All', 'Work', 'Life'].map((name) => {
+      const on = name === filter;
+      return {
+        name: name,
+        pressed: on ? 'true' : 'false',
+        line: on ? '#111111' : 'transparent',
+        pick: () => this.setState({ filter: name })
+      };
+    });
+    return {
+      accent: accent,
+      q: q,
+      onSearch: (e) => this.setState({ q: e.target.value }),
+      pins: pins,
+      empty: pins.length === 0,
+      tabs: tabs
+    };
+  }
+}
+</script>
+</body>
+</html>

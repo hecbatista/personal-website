@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+/* Design tokens from docs/DESIGN_BRIEF.md. Light mode only in v1 (dark mode is issue #14). */
+@theme {
+  --font-sans: var(--font-bricolage), "Helvetica Neue", Arial, sans-serif;
+
+  --color-accent: #1f4e9e;
+  --color-accent-hover: #163a78;
+
+  --color-ink: #111111;
+  --color-body: #2b2f36;
+  --color-muted: #4a4f57;
+
+  --color-surface: #ffffff;
+  --color-pill: #efefef;
+  --color-panel: #eef2f9;
+  --color-chip-text: #163a78;
+
+  --color-divider: #e3e6eb;
+  --color-footer: #f4f6fa;
+
+  --radius-pin: 16px;
+  --radius-panel: 20px;
+  --radius-card: 32px;
+
+  --shadow-card: 0 1px 20px rgba(17, 17, 17, 0.12);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+a {
+  color: var(--color-accent);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
