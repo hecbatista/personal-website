@@ -14,14 +14,16 @@ jobs:
     name: Format, lint, typecheck, build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 24
           cache: npm
       - run: npm ci
       - name: Format check
         run: npm run format:check
+      - name: Content check
+        run: npm run check:content
       - name: Lint
         run: npm run lint
       - name: Typecheck
