@@ -12,7 +12,17 @@ still the visual reference.
 | v1.1    | Following weekend                 | Summer 2027 applications | Dashboard demo video, demo panel (only with a self-resetting demo environment), Result numbers                                                 |
 | Later   | —                                 | —                        | Custom domain (`hectorbatista.com`), AI showcase + local models, share images, real azulejo image, dark mode                                   |
 
-Each piece of work is a GitHub issue, a branch, and a PR. CI (format → lint → typecheck → build) is required on `main`.
+Each piece of work is a GitHub issue, a branch, and a PR. CI (format → lint → typecheck → build) is required on `main` and `develop`.
+
+### Branches and environments
+
+| Branch           | Vercel                          | Who sees it                                                   |
+| ---------------- | ------------------------------- | ------------------------------------------------------------- |
+| `main`           | Production, `hectorbatista.com` | Everyone. Until launch it holds only a coming-soon page.      |
+| `develop`        | Preview, stable branch URL      | Only you (Vercel Authentication). Unfinished work lives here. |
+| feature branches | Preview per PR                  | Only you. PRs target `develop`.                               |
+
+Launch means merging `develop` into `main`. There is no launch flag in the code.
 
 ## Goal
 

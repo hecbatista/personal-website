@@ -1,7 +1,6 @@
 import type { Site } from "./types";
 
 export const site: Site = {
-  launched: false,
   name: "Hector Batista",
   shortName: "Hector’s board",
   tagline: "I build useful things for real people.",

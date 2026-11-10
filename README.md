@@ -10,6 +10,12 @@ Hector Batista's personal site: a board of projects and life, built for recruite
 
 Next.js (App Router, static), TypeScript, Tailwind CSS v4, Vercel, GitHub Actions.
 
+## Branches
+
+- `main` is production (`hectorbatista.com`). It holds only the coming-soon page until launch.
+- `develop` holds work in progress and deploys to a private Vercel preview.
+- Open feature PRs against `develop`. Launch by merging `develop` into `main`.
+
 ## Develop
 
 ```bash
