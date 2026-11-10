@@ -22,6 +22,9 @@ export type Media =
       embedUrl: string;
       /** Path under /public, shown until the visitor clicks play. */
       poster: string;
+      /** Poster dimensions, used for the board thumbnail's aspect ratio. */
+      width: number;
+      height: number;
       title: string;
       /** e.g. "1:42" */
       length?: string;
@@ -86,3 +89,21 @@ export type TextPin = PinBase & {
 };
 
 export type Pin = ImagePin | TextPin;
+
+/** Site-wide identity and contact details. Optional links render only when set. */
+export type Site = {
+  name: string;
+  /** Board-voice name, e.g. "Hector's board". */
+  shortName: string;
+  tagline: string;
+  intro: string;
+  availability: string;
+  /** Split so the address isn't in the HTML; joined in the browser. */
+  email: { user: string; domain: string };
+  github?: string;
+  linkedin?: string;
+  /** Path under /public, e.g. "/resume.pdf". */
+  resume?: string;
+  /** Path under /public, square image. */
+  headshot?: string;
+};

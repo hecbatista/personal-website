@@ -4,6 +4,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { pins } from "../content/pins.ts";
+import { site } from "../content/site.ts";
 
 const publicDir = join(import.meta.dirname, "..", "public");
 const placeholder = /\[[^\]]*\]/;
@@ -71,6 +72,15 @@ for (const pin of pins) {
       fail(slug, "published image pins need at least one media item");
     checkPlaceholders(pin);
   }
+}
+
+for (const [path, text] of strings(site)) {
+  if (placeholder.test(text)) fail("site", `placeholder in ${path}: "${text}"`);
+}
+for (const key of ["resume", "headshot"] as const) {
+  const path = site[key];
+  if (path && !existsSync(join(publicDir, path)))
+    fail("site", `${key} file not found: public${path}`);
 }
 
 if (errors.length) {

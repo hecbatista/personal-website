@@ -26,19 +26,29 @@
   --shadow-card: 0 1px 20px rgba(17, 17, 17, 0.12);
 }
 
-html {
-  color-scheme: light;
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    background: var(--color-surface);
+    color: var(--color-ink);
+  }
+
+  a {
+    color: var(--color-accent);
+  }
+
+  a:hover {
+    color: var(--color-accent-hover);
+  }
 }
 
-body {
-  background: var(--color-surface);
-  color: var(--color-ink);
-}
-
-a {
-  color: var(--color-accent);
-}
-
-a:hover {
-  color: var(--color-accent-hover);
+/* Hide the CSS-columns fallback until the client masonry has measured the page,
+   so JS users never see pins jump. Without JS, the fallback stays visible. */
+@media (scripting: enabled) {
+  [data-masonry="pending"] {
+    visibility: hidden;
+  }
 }
