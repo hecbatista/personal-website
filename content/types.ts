@@ -92,6 +92,11 @@ export type Pin = ImagePin | TextPin;
 
 /** Site-wide identity and contact details. Optional links render only when set. */
 export type Site = {
+  /**
+   * false: production (hectorbatista.com) shows the coming-soon page.
+   * Previews and local dev always show the real site. Flip to true to launch.
+   */
+  launched: boolean;
   name: string;
   /** Board-voice name, e.g. "Hector's board". */
   shortName: string;
