@@ -1,14 +1,10 @@
 import { Board } from "@/components/board";
-import { ComingSoon } from "@/components/coming-soon";
 import { Profile } from "@/components/profile";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { comingSoon } from "@/lib/launch";
 import { getPins } from "@/lib/pins";
 
 export default function Home() {
-  if (comingSoon) return <ComingSoon />;
-
   return (
     <>
       <SiteHeader />
