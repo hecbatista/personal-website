@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { EmailLink } from "@/components/email-link";
 import { pill } from "@/components/pill";
 import { site } from "@/content/site";
@@ -8,8 +9,19 @@ export default function Home() {
   return (
     <main className="flex flex-1 flex-col items-center justify-center gap-3.5 px-5 py-16 text-center">
       <div className="bg-accent size-32 rounded-full p-[5px]">
-        <div className="text-chip-text flex size-full items-center justify-center rounded-full border-4 border-white bg-[#DCE5F3] text-3xl font-bold">
-          <span aria-hidden="true">HB</span>
+        <div className="text-chip-text flex size-full items-center justify-center overflow-hidden rounded-full border-4 border-white bg-[#DCE5F3] text-3xl font-bold">
+          {site.headshot ? (
+            <Image
+              src={site.headshot}
+              alt={site.name}
+              width={236}
+              height={236}
+              preload
+              className="size-full object-cover"
+            />
+          ) : (
+            <span aria-hidden="true">HB</span>
+          )}
         </div>
       </div>
       <h1 className="m-0 text-[44px] leading-tight font-extrabold tracking-[-0.03em] [font-variation-settings:'opsz'_96]">
