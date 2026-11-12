@@ -45,7 +45,7 @@ export default function Home() {
   );
 }
 
-/** Small azulejo tile that turns slowly; still for people who prefer reduced motion. */
+/** Small azulejo tile that flips like a coin now and then; still for people who prefer reduced motion. */
 function AzulejoTile() {
   return (
     <svg
@@ -53,7 +53,7 @@ function AzulejoTile() {
       width="18"
       height="18"
       viewBox="0 0 24 24"
-      className="text-accent motion-safe:animate-[spin_20s_linear_infinite]"
+      className="text-accent motion-safe:animate-coin"
       fill="none"
       stroke="currentColor"
       strokeWidth="1.5"
