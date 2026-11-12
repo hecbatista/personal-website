@@ -10,5 +10,6 @@ export const site: Site = {
     "Open to Spring and Summer 2027 co-ops in Product and AI Engineering.",
   email: { user: "batista.h", domain: "northeastern.edu" },
   github: "https://github.com/hecbatista",
-  // linkedin, resume, and headshot arrive with the assets (issue #7).
+  headshot: "/headshot.jpg",
+  // linkedin and resume arrive with the assets (issue #7).
 };
