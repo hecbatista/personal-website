@@ -68,14 +68,17 @@ function ImagePinCard({ pin, preload }: { pin: ImagePin; preload?: boolean }) {
 
 function TextPinCard({ pin }: { pin: TextPin }) {
   return (
-    <div className="rounded-pin bg-accent relative flex flex-col gap-3 px-[22px] py-[26px] text-white">
+    <Link
+      href={`/pins/${pin.slug}`}
+      className="rounded-pin bg-accent hover:bg-accent-hover relative flex flex-col gap-3 px-[22px] py-[26px] text-white no-underline transition-colors hover:text-white"
+    >
       <p className="m-0 text-[13px] font-bold opacity-90">{pin.caption}</p>
       <p className="m-0 text-[22px] leading-[1.12] font-bold tracking-[-0.02em] [font-variation-settings:'opsz'_72] sm:text-[26px]">
         {pin.title}
       </p>
       <p className="m-0 text-sm leading-snug">{pin.body}</p>
       {pin.draft && <DraftChip />}
-    </div>
+    </Link>
   );
 }
 
