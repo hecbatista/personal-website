@@ -10,14 +10,43 @@ export const pins: Pin[] = [
     kind: "image",
     category: "Work",
     featured: true,
-    badge: "In progress",
-    draft: true, // needs screenshots captured from northeast-fence.com
+    badge: "Live",
     title: "Northeast Fence",
     caption: "Website rebuild, Google Ads, and a CRM in the works",
     context: "northeast-fence.com",
     description:
-      "A new website, Google Ads strategy, and a custom CRM in progress for my family’s fencing business in Union and Middlesex counties, NJ.",
+      "I rebuilt and launched the website for my family’s fencing business in Union and Middlesex counties, NJ, and I run its Google Ads. A custom CRM is next.",
     role: "Built, ran, and maintains this",
+    media: [
+      {
+        type: "image",
+        src: "/pins/northeast-fence/home-phone-hero.jpg",
+        alt: "Northeast Fence home page on a phone: the headline “Fence Installation & Vinyl Fence Supply in New Jersey” over a white vinyl fence, with Call and Get a Free Quote buttons pinned to the bottom of the screen.",
+        width: 780,
+        height: 962,
+      },
+      {
+        type: "image",
+        src: "/pins/northeast-fence/home.jpg",
+        alt: "Northeast Fence home page on desktop: navigation with a phone button and a Get a Free Quote button, then a full-width hero photo of a white vinyl fence with the headline, a line about 370 Google reviews, and call and quote buttons.",
+        width: 1600,
+        height: 1000,
+      },
+      {
+        type: "image",
+        src: "/pins/northeast-fence/edison.jpg",
+        alt: "The Edison, NJ town page: breadcrumbs, the headline “Fence Company Edison NJ” over a photo of a wood fence, review badges for Facebook, Google, and Yelp, and a Get a Free Quote card.",
+        width: 1600,
+        height: 1000,
+      },
+      {
+        type: "image",
+        src: "/pins/northeast-fence/quote-form.jpg",
+        alt: "The quote form: name, phone, email, town, fence type, and project details fields, next to a short promise of a callback within one business day and written quotes.",
+        width: 1600,
+        height: 852,
+      },
+    ],
     links: [
       {
         label: "Visit site",
@@ -32,18 +61,22 @@ export const pins: Pin[] = [
       "Supabase",
       "Resend",
       "Vercel",
+      "GitHub Actions",
       "GA4",
       "Google Ads",
+      "Claude Code",
     ],
     writeUp: {
       problem:
-        "An older WordPress site where leads landed in an email inbox, and no CRM to track them.",
+        "An older WordPress site where leads landed in an email inbox, and no CRM to track them. Google Ads were already running, so losing search rankings in a rebuild would have cost real money.",
       builtLabel: "What I did",
       built:
-        "Rebuilt the site as fast static pages, with a landing page for each service in each town for paid traffic. New lead form saves to a database and sends alerts. Built a tiered service-area plan from past job data that the owner adopted, and launched Local Services Ads.",
+        "Rebuilt the site in Next.js as fast static pages and moved the business’s existing domain from WordPress to Vercel. The quote form saves each lead to a database and emails an alert. Every phone tap and form submission counts as a Google Ads conversion, tracked only in production so tests never send fake ones. I redirected 184 retired pages to their closest match instead of letting them break, and wrote a tool that merges later edits from the old site without undoing my fixes. Before the rebuild, I built a tiered service-area plan from past job data that the owner adopted, and launched Local Services Ads.",
       decisions:
-        "Kept every existing URL at launch to protect search rankings. Chose ad landing pages over a blog. Skipped a CMS for now since I maintain the site in code.",
-      next: "A custom CRM built around how the business actually works, with security as the top priority.",
+        "Launched with the same URLs, titles, and headings first and saved improvements for later, because the biggest risk was losing Google rankings while ads were running. Kept the database on a free plan, with a scheduled job that stops it from pausing, because the owner wanted $0 in hosting costs. Ran the launch with Claude Code: a parallel-agent SEO audit, and separate sessions for tracking, email, and the cutover.",
+      result:
+        "Launched on November 15, 2026. In production, all 331 URLs behave as planned (124 kept, 202 redirected, 5 retired) and all 103 pages pass the SEO checks. Call and lead conversions were confirmed firing on the live site.",
+      next: "A custom CRM built around how the business actually works, with security as the top priority. Also a phone-friendly Google Ads dashboard for the owners, now scoped.",
     },
   },
   {
