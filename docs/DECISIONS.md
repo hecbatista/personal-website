@@ -44,7 +44,7 @@ open the resume, or send an email. Every page puts all three within one click.
 - **Layout:** client masonry. Each pin goes, in order, into the shortest column, so featured pins fill the top row. CSS `columns` is the fallback when JS is off. This replaces the brief's plain CSS columns.
 - **Badges show status, not format:** "Live", "In production", "In progress". The words "case study" never appear. Pins with a write-up still show The problem / What I built / Decisions / Result / What's next.
   - FirstByte Dashboard → "In production"
-  - Northeast Fence → "In progress"
+  - Northeast Fence → "Live" (launched Nov 15, 2026; the CRM is "What's next")
   - FirstByte (website team) → no badge, simple detail page
 - **v1 pins:** Northeast Fence, FirstByte Dashboard, FirstByte, "How I build" (text pin, mockup copy), Work pins that have photos, and 3–4 Life pins with real photos.
 - **Cut:** the Integra and Now Playing.
