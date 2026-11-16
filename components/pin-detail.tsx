@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { ImagePin, Pin, TextPin, WriteUp } from "@/content/types";
 import { site } from "@/content/site";
+import { stackIcons } from "@/lib/stack-icons";
 import { DemoPanel } from "./demo-panel";
 import { EmailLink } from "./email-link";
 import { MediaCarousel } from "./media-carousel";
@@ -36,24 +37,32 @@ function ImagePinDetail({ pin }: { pin: ImagePin }) {
   );
 
   return (
+    // On wide screens the card is capped at the viewport height: the media
+    // fills the left half and the details scroll inside the right half.
     <article
-      className={`${card} grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]`}
+      className={`${card} flex flex-col lg:max-h-[max(560px,calc(100dvh-7.5rem))] lg:flex-row`}
     >
-      <div className="lg:sticky lg:top-0 lg:self-start">
+      <div className="lg:w-1/2 lg:flex-none">
         {media.length ? (
-          <MediaCarousel media={media} title={pin.title} preload>
+          <MediaCarousel
+            media={media}
+            title={pin.title}
+            preload
+            className="lg:h-full"
+          >
             {badge}
           </MediaCarousel>
         ) : (
-          <div className="bg-panel text-muted relative flex aspect-[1/1.1] items-center justify-center p-6 text-center text-sm">
+          <div className="bg-panel text-muted relative flex aspect-[1/1.1] items-center justify-center p-6 text-center text-sm lg:h-full">
             Needs an image
             {badge}
           </div>
         )}
       </div>
 
-      <div className="flex min-w-0 flex-col gap-5 px-5 pt-5 pb-8 sm:px-8 sm:pt-7 sm:pb-9">
-        <div className="flex flex-wrap items-center justify-between gap-3">
+      <div className="flex min-w-0 [scrollbar-width:thin] flex-col gap-5 px-5 pb-8 sm:px-8 sm:pb-9 lg:w-1/2 lg:flex-none lg:overflow-y-auto lg:overscroll-contain">
+        {/* Share, copy link and the primary link stay in view while the details scroll. */}
+        <div className="bg-surface z-10 flex flex-wrap items-center justify-between gap-3 pt-5 sm:pt-7 lg:sticky lg:top-0 lg:pb-2">
           <ShareButtons title={pin.title} />
           {cta && <LinkPill link={cta} className={pill.accent} />}
         </div>
@@ -90,8 +99,20 @@ function ImagePinDetail({ pin }: { pin: ImagePin }) {
             {pin.stack.map((item) => (
               <li
                 key={item}
-                className="bg-panel text-chip-text rounded-full px-[13px] py-[7px] text-[13px] font-semibold"
+                className="bg-panel text-chip-text inline-flex items-center gap-1.5 rounded-full px-[13px] py-[7px] text-[13px] font-semibold"
               >
+                {stackIcons[item] && (
+                  <svg
+                    aria-hidden="true"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="flex-none"
+                  >
+                    <path d={stackIcons[item]} />
+                  </svg>
+                )}
                 {item}
               </li>
             ))}

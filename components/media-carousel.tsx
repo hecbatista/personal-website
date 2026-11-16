@@ -45,6 +45,7 @@ export function MediaCarousel({
   media,
   title,
   preload,
+  className = "",
   children,
 }: {
   media: Media[];
@@ -52,6 +53,8 @@ export function MediaCarousel({
   title: string;
   /** Preload the first slide (it is the page's largest image). */
   preload?: boolean;
+  /** Extra classes for the frame, e.g. to fill a fixed-height column. */
+  className?: string;
   /** Overlays on the frame, e.g. the status badge. */
   children?: React.ReactNode;
 }) {
@@ -106,7 +109,7 @@ export function MediaCarousel({
       aria-roledescription="carousel"
       aria-label={`${title}, media`}
       onKeyDown={onKeyDown}
-      className="bg-panel relative w-full"
+      className={`bg-panel relative w-full ${className}`}
       style={{ aspectRatio: `1 / ${frameRatio(media)}` }}
     >
       <div
