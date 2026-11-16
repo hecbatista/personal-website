@@ -59,6 +59,17 @@ export const pins: Pin[] = [
     description:
       "A club management and attendance tracking app for FirstByte, a CS/STEM education club. I’m the only developer, and it runs in production for real members.",
     role: "Solo developer",
+    links: [
+      {
+        label: "Open app",
+        href: "https://teachfirstbyte.com/dashboard",
+        primary: true,
+      },
+      {
+        label: "View code",
+        href: "https://github.com/teach-firstbyte/firstbyte-web-dashboard",
+      },
+    ],
     stack: [
       "Next.js",
       "TypeScript",
@@ -70,11 +81,15 @@ export const pins: Pin[] = [
       "GitHub Actions",
     ],
     writeUp: {
+      problem:
+        "Attendance lived in a separate Google Form for each event. When it came time to request funding, Kaleidoscope, the council that funds clubs in Northeastern’s computer science college, asked for all of our attendance records, and we had to pull every form’s responses into one place by hand.",
       built:
         "Self check-in with signed QR codes, member and officer dashboards with attendance rates, searchable attendance records, and a feedback system officers can review.",
       decisions:
         "Email sign-in links kept breaking because school email scanners clicked them first, so I switched to 6-digit codes. Every pull request has to pass formatting, linting, type checks, and a build before it can merge. Preview deploys use their own database so testing never touches real data.",
-      next: "An approval step for new members, dark mode, and moving it to the club’s own domain.",
+      result:
+        "About 40 members have accounts, and it has tracked about 10 events so far.",
+      next: "An approval step for new members, dark mode, and an attendance export for funding requests.",
     },
   },
   {
@@ -84,7 +99,7 @@ export const pins: Pin[] = [
     featured: true,
     draft: true, // needs a screenshot of the FirstByte site
     title: "FirstByte",
-    caption: "Leading the website team and the club’s stack",
+    caption: "Leading a 5-person website team: reviews, CI/CD, and sprints",
   },
   {
     slug: "how-i-build",
@@ -117,22 +132,6 @@ export const pins: Pin[] = [
     draft: true,
     title: "ViTAL hackathon",
     caption: "Software Expert Co-Lead, curating tracks",
-  },
-  {
-    slug: "boys-and-girls-club",
-    kind: "image",
-    category: "Work",
-    draft: true,
-    title: "Boys & Girls Club",
-    caption: "Volunteer teaching in Dorchester",
-  },
-  {
-    slug: "firstbyte-events",
-    kind: "image",
-    category: "Work",
-    draft: true,
-    title: "FirstByte events",
-    caption: "[Your caption]",
   },
   {
     slug: "travel-1",
