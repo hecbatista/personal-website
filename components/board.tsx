@@ -10,7 +10,7 @@ const COLUMN_GAP = 16;
 const ROW_GAP = 20;
 /** Below this width the board is a single column. */
 const TWO_COLUMN_MIN = 300;
-/** The top row's images load eagerly. */
+/** By default the top row's images are preloaded. */
 const PRELOAD_COUNT = 3;
 
 function columnCount(width: number) {
@@ -39,7 +39,14 @@ function layout(pins: Pin[], width: number) {
  * Masonry board. The server renders a CSS-columns fallback; once the browser
  * knows the width, pins are laid out left to right by shortest column.
  */
-export function Board({ pins }: { pins: Pin[] }) {
+export function Board({
+  pins,
+  preloadCount = PRELOAD_COUNT,
+}: {
+  pins: Pin[];
+  /** How many of the first pins preload their image. */
+  preloadCount?: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState<number | null>(null);
 
@@ -53,7 +60,7 @@ export function Board({ pins }: { pins: Pin[] }) {
     return () => observer.disconnect();
   }, []);
 
-  const preload = new Set(pins.slice(0, PRELOAD_COUNT).map((p) => p.slug));
+  const preload = new Set(pins.slice(0, preloadCount).map((p) => p.slug));
 
   return (
     <div ref={ref}>
