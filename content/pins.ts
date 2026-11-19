@@ -85,13 +85,57 @@ export const pins: Pin[] = [
     category: "Work",
     featured: true,
     badge: "In production",
-    draft: true, // needs dashboard screenshots
     title: "FirstByte Dashboard",
     caption: "Attendance and club management app, built solo",
     context: "For FirstByte at Northeastern",
     description:
       "A club management and attendance tracking app for FirstByte, a CS/STEM education club. I’m the only developer, and it runs in production for real members.",
     role: "Solo developer",
+    // Screenshots are from a local dev stack seeded with made-up members; no real member data.
+    media: [
+      {
+        type: "image",
+        src: "/pins/firstbyte-dashboard/phone-hero.jpg",
+        alt: "Member dashboard on a phone: a “Your attendance” card showing 100% of required meetings and 95% of all events, a row of check and miss marks for recent meetings, and the member’s teams below.",
+        width: 780,
+        height: 962,
+      },
+      {
+        type: "image",
+        src: "/pins/firstbyte-dashboard/officer-dashboard.jpg",
+        alt: "Officer dashboard: a card flagging a member who missed 2 of the last 3 meetings, with a Copy email button, above metric cards for last-meeting attendance (75%, with a trend line and an 81% average), last-meeting feedback (4.0 stars from 5 responses, 1 low rating to read), and 50 active members.",
+        width: 1600,
+        height: 930,
+      },
+      {
+        type: "image",
+        src: "/pins/firstbyte-dashboard/qr-check-in.jpg",
+        alt: "Projector check-in screen for a live meeting: a large QR code, a 6-character backup code, and a live count of 10 checked in out of 15 invited.",
+        width: 1600,
+        height: 1000,
+      },
+      {
+        type: "image",
+        src: "/pins/firstbyte-dashboard/qr-check-in-phone.jpg",
+        alt: "A member’s phone after scanning the meeting QR code: a green check and “You’re checked in” for the Website team meeting.",
+        width: 780,
+        height: 900,
+      },
+      {
+        type: "image",
+        src: "/pins/firstbyte-dashboard/attendance-records.jpg",
+        alt: "Attendance records page with the search “general meeting” and the Excused filter applied, listing matching members with the meeting, status, and their excuse notes.",
+        width: 1600,
+        height: 1000,
+      },
+      {
+        type: "image",
+        src: "/pins/firstbyte-dashboard/feedback.jpg",
+        alt: "Officer feedback page: a 3.7-star average from 41 ratings with 4 rated 2 stars or less, above a table of recent entries showing the author (or Anonymous), meeting, star rating, and category.",
+        width: 1600,
+        height: 1000,
+      },
+    ],
     links: [
       {
         label: "Open app",
@@ -117,12 +161,12 @@ export const pins: Pin[] = [
       problem:
         "Attendance lived in a separate Google Form for each event. When it came time to request funding, Kaleidoscope, the council that funds clubs in Northeastern’s computer science college, asked for all of our attendance records, and we had to pull every form’s responses into one place by hand.",
       built:
-        "Self check-in with signed QR codes, member and officer dashboards with attendance rates, searchable attendance records, and a feedback system officers can review.",
+        "QR self check-in with HMAC-signed codes for each meeting that only work while the meeting is on. A member dashboard with your own attendance rate, and an officer dashboard with club-wide attendance trends and a list of members who’ve missed recent meetings. Searchable attendance records, a feedback system officers can review, an approval step for new members, and dark mode. It runs on the club’s own domain alongside the main site.",
       decisions:
-        "Email sign-in links kept breaking because school email scanners clicked them first, so I switched to 6-digit codes. Every pull request has to pass formatting, linting, type checks, and a build before it can merge. Preview deploys use their own database so testing never touches real data.",
+        "Northeastern’s email scanner was opening confirmation links and confirming new accounts before the email even reached the inbox, so confirming now takes a real button press. Every pull request that touches the app has to pass formatting, linting, type checks, and a build before it can merge, plus a check that keeps the database client out of browser code. Preview deployments run on a separate, seeded database, so testing never touches production data.",
       result:
-        "About 40 members have accounts, and it has tracked about 10 events so far.",
-      next: "An approval step for new members, dark mode, and an attendance export for funding requests.",
+        "Live since August 18, 2026. So far it has 41 member accounts, 14 meetings, and 221 attendance records, including 40 self check-ins.",
+      next: "An attendance export for funding requests, letting admins promote members to officers, and team invites and member search.",
     },
   },
   {
